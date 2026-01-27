@@ -1,0 +1,41 @@
+<template>
+    <lightning-card title="Search Contacts">
+        <div class="slds-m-around_medium">
+            <lightning-input
+                type="search"
+                label="Search Contact"
+                onchange={handleSearch}
+                placeholder="Type contact name..."
+            >
+            </lightning-input>
+
+            <template if:true={contacts}>
+                <template for:each={contacts} for:item="con">
+                    <div key={con.Id} class="slds-box slds-m-top_small">
+                        <a
+                           
+                            data-id={con.Id}
+                            onclick={handleContactClick}
+                            class="slds-text-heading_medium"
+                        >
+                            {con.Name}
+                        </a>
+
+                        <p class="slds-m-top_x-small">
+                             {con.Email}
+                        </p>
+                        <p>
+                             {con.Phone}
+                        </p>
+                    </div>
+                </template>
+            </template>
+
+            <template if:true={noResults}>
+                <p class="slds-text-color_error slds-m-top_small">
+                    No contacts found
+                </p>
+            </template>
+        </div>
+    </lightning-card>
+</template>
