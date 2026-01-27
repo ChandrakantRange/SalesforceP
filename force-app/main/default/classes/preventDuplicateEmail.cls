@@ -15,6 +15,7 @@ public class preventDuplicateEmail {
         
         
         list<contact> extingcontactlist = new list<contact>([select lastname, email from contact where email in: email]);
+        
         set<string> emaillist = new set <string>();
         if(!extingcontactlist.isempty()){
             for(contact con1 : extingcontactlist){
