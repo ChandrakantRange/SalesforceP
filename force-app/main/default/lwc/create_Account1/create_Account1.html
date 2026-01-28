@@ -1,0 +1,31 @@
+<template>
+    <lightning-card title="Create Account , Contact , Opportunity ">
+        <lightning-tabset>
+    <lightning-tab label="Account">   
+        <div class="slds-p-around_medium">
+            <lightning-input name="name" label="Account Name" value={name} onchange={handleChange}></lightning-input>
+            <lightning-input name="phone" label="Phone" value={phone} onchange={handleChange}></lightning-input>
+            <lightning-input name="website" label="Website" value={website} onchange={handleChange}></lightning-input>
+            <lightning-input name="employees" type="number" label="Employees" value={employees} onchange={handleChange}></lightning-input>
+            <lightning-input name="revenue" type="number" label="Annual Revenue" value={revenue} onchange={handleChange}></lightning-input>
+
+            <div class="slds-m-top_medium">
+                <lightning-button label="Save" variant="brand" onclick={handleSave}></lightning-button>           
+            </div>
+        </div>
+       </lightning-tab>
+
+    <lightning-tab label="Contact">
+                <lightning-record-form
+                    object-api-name="Contact"  record-id={accountId}
+                    fields={fields}  onsuccess={handleSuccess}> </lightning-record-form>
+            </lightning-tab>
+
+            
+            <lightning-tab label="Opportunity">
+                <lightning-record-form object-api-name="Opportunity"  record-id={accountId} fields={fields1}  onsuccess={handleopp}>  </lightning-record-form>
+            </lightning-tab>
+            
+</lightning-tabset>
+    </lightning-card>
+</template>
