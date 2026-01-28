@@ -1,6 +1,14 @@
-public with sharing class SearchClass {
-    public static list<Opportunity> SearchClass(string stage , string name) {
-        list<Opportunity> opp= [select id, name, stageName from Opportunity where stageName = :stage and name = :name];
-        return opp;
+public class SearchClass {
+
+    @AuraEnabled(cacheable=true)
+    public static List<Opportunity> searchOpportunities(String searchKey) {
+
+        return [
+            SELECT Id, Name, StageName
+            FROM Opportunity
+            WHERE Name LIKE :('%' + searchKey + '%')
+            ORDER BY CreatedDate DESC
+            LIMIT 10
+        ];
     }
 }
