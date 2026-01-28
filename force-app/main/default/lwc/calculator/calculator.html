@@ -1,21 +1,19 @@
 <template>
-    <lightning-card title="Calculator" icon-name="standard:account">
+    <lightning-card title="Calculator" >
         <div class="slds-p-around_medium">
-            <lightning-input type="number" label="First Number" value={firstNumber} onchange={handleChange}></lightning-input>
-            <lightning-input type="number" label="Second Number" value={secondNumber} onchange={handleChange}></lightning-input>
-
+            <lightning-input type="number" label="Enter First Number" value={firstNumber} onchange={handleNum1Change}></lightning-input>
+            <lightning-input type="number" label="Enter Second Number" value={secondNumber} onchange={handleNum2Change}></lightning-input>
+            
             <div class="slds-m-top_medium">
-                <lightning-button label="Add" variant="brand" onclick={handleAdd}></lightning-button>
-                <lightning-button label="Subtract" variant="brand" onclick={handleSubtract}></lightning-button>
-                <lightning-button label="Multiply" variant="brand" onclick={handleMultiply}></lightning-button>
-                <lightning-button label="Divide" variant="brand" onclick={handleDivide}></lightning-button>
-
+                <lightning-button label="Add" onclick={handleCalculation} name="add" ></lightning-button>
+                <lightning-button label="Subtract" onclick={handleCalculation} name="subtract"></lightning-button>
+                <lightning-button label="Multiply" onclick={handleCalculation} name="multiply" ></lightning-button>
+                <lightning-button label="Divide" onclick={handleCalculation} name="divide" ></lightning-button>
             </div>
+            
+            <div class="slds-m-top_medium slds-text-heading_medium">
+                Result: <strong>{result}</strong>
             </div>
-            <div class="slds-m-top_medium">
-                 <p class="slds-m-top_medium">Result: <strong>{result}</strong></p>
-            </div>
+        </div>
     </lightning-card>
-
-    
 </template>

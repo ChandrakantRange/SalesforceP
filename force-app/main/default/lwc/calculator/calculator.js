@@ -1,31 +1,30 @@
-import { LightningElement } from 'lwc';
+import { LightningElement , track} from 'lwc';
 
 export default class Calculator extends LightningElement {
-    firstNumber = 0;
-    secondNumber = 0;
-    result = 0;
+    
 
-    handleChange(event) {
-        const field = event.target.dataset.field;
-        this[field] = parseFloat(event.target.value);
+    @track firstNumber;
+    @track secondNumber;
+    @track result = 0;
+
+    handleNum1Change(event) {
+        this.firstNumber = parseFloat(event.target.value);
     }
 
-    handleAdd() {
-        this.result = this.firstNumber + this.secondNumber;
+    handleNum2Change(event) {
+        this.secondNumber = parseFloat(event.target.value);
     }
 
-    handleSubtract() {
-        this.result = this.firstNumber - this.secondNumber;
-    }
-
-    handleMultiply() {
-        this.result = this.firstNumber * this.secondNumber;
-    }
-
-    handleDivide() {
-        this.result =
-            this.secondNumber !== 0
-                ? this.firstNumber / this.secondNumber
-                : 'Cannot divide by zero';
+    handleCalculation(event) {
+        const operation = event.target.name;
+        if (operation === 'add') {
+            this.result = this.firstNumber + this.secondNumber;
+        } else if (operation === 'subtract') {
+            this.result = this.firstNumber - this.secondNumber;
+        } else if (operation === 'multiply') {
+            this.result = this.firstNumber * this.secondNumber;
+        } else if (operation === 'divide') {
+            this.result = this.secondNumber !== 0 ? this.firstNumber / this.secondNumber : 'Error';
+        }
     }
 }
