@@ -6,7 +6,7 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 export default class CreateAccount extends LightningElement {
     @track accountName = '';
     @track phone = '';
-    @track Email = '';
+    @track Email = ''; 
     @track contactCount;
 
     accountId; 
