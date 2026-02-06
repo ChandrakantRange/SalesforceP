@@ -1,0 +1,30 @@
+<template>
+    <div class="slds-m-top_large">  
+        <lightning-card title="Related Contacts">
+
+            <template if:true={contacts}>
+                <lightning-datatable 
+                    key-field="Id" 
+                    data={contacts} 
+                    columns={columns} 
+                    hide-checkbox-column>
+                </lightning-datatable>
+            </template>
+
+            <template if:true={error}>
+                <p class="slds-text-color_error slds-p-around_small">
+                    Error loading contacts
+                </p>
+            </template>
+        </lightning-card>
+
+        <!-- Flow added -->
+        <template if:true={showFlow}>
+            <lightning-flow
+                flow-api-name="DisplayContact1"
+                flow-input-variables={varAccountId}
+                onstatuschange={handleFlowStatusChange}>
+            </lightning-flow>
+        </template>
+    </div>
+</template>
