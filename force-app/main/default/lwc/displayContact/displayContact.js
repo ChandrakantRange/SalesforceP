@@ -29,9 +29,9 @@ export default class DisplayContact extends LightningElement {
     }
 
     // Flow input variable
-    get varAccountId() {
+    get varAccountId1() {
         return [
-            { name: 'accountId', type: 'String', value: this.accountId }
+            { name: 'varAccountId1', type: 'String', value:  '$accountId' }
         ];
     }
 
