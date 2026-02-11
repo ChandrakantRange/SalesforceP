@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Account Count by Industry" icon-name="custom:custom63">
+        <div class="slds-m-around_medium">
+            <template if:true={data}>
+                <lightning-datatable
+                    key-field="id"
+                    data={data}
+                    columns={columns}
+                    hide-checkbox-column="true">
+                </lightning-datatable>
+            </template>
+            <template if:true={error}>
+                <div class="slds-text-align_center">
+                    No data available. Please check.
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
