@@ -22,6 +22,7 @@ global class BatchHignPriority implements Database.Batchable<sObject>, Database.
             update case1;
         }
     }
+    
 
     public void finish(Database.BatchableContext bc){
             System.enqueueJob(new queueContactPriority(contactId));
